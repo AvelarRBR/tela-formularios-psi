@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', function () {
 
-    // --- Lógica do Checkbox "Menor de Idade" ---
+
     const checkMenor = document.getElementById('checkMenorIdade');
     const dadosResponsavel = document.getElementById('dadosResponsavel');
 
@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 
-    // --- Lógica dos Selects (Placeholder) ---
+
     document.querySelectorAll('.form-select').forEach(select => {
         const updateColor = () => {
             if (select.value === "") {
@@ -25,16 +25,16 @@ document.addEventListener('DOMContentLoaded', function () {
         updateColor(); // Cor inicial
     });
 
-    // --- (NOVO) Lógica de Adicionar/Remover Contato ---
+
     const contactsContainer = document.getElementById('emergencyContactsContainer');
     const addContactBtn = document.getElementById('addContactBtn');
     let contactCount = 1;
 
-    // Adicionar Contato
+
     addContactBtn.addEventListener('click', function () {
         contactCount++;
 
-        // Cria o novo elemento de contato
+
         const newContact = document.createElement('div');
         newContact.className = 'contact-entry';
         newContact.innerHTML = `
@@ -59,16 +59,15 @@ document.addEventListener('DOMContentLoaded', function () {
         contactsContainer.appendChild(newContact);
     });
 
-    // Remover Contato (usando delegação de evento)
+
     contactsContainer.addEventListener('click', function (e) {
-        // Procura pelo botão de remover mais próximo do elemento clicado
         const removeBtn = e.target.closest('.remove-contact-btn');
 
         if (removeBtn) {
             const contactEntry = removeBtn.closest('.contact-entry');
             contactEntry.remove();
 
-            // (Opcional) Re-numera os contatos restantes
+
             updateContactNumbers();
         }
     });
@@ -81,7 +80,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 title.textContent = `Contato ${index + 1}`;
             }
         });
-        contactCount = allContacts.length; // Atualiza o contador global
+        contactCount = allContacts.length; 
     }
 
 });
