@@ -4,15 +4,14 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Ficha de Inscrição da Comunidade</title>
-
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"/>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet"/>
-    <link rel="stylesheet" href="formconvenio.css">
+    <link rel="stylesheet" href="teste.css">
 </head>
 <body>
 
     <div class="container logo-container">
-        <img src="/imgs/e09e28c5018183995db4d302e9628b4d6ae6cfd9.png" class="logo-image">
+        <img src="/imgs/e09e28c5018183995db4d302e9628b4d6ae6cfd9.png" class="logo-image" alt="Logo da Comunidade">
     </div>
 
     <header class="form-title-bar">
@@ -20,51 +19,38 @@
     </header>
 
     <main class="container form-container">
-        <form id="form-comunidade" method="POST" action="/formulario/cadastro/comunidade/">
+        
+        <div id="form-feedback" class="mt-4" aria-live="polite"></div>
+
+        <form id="form-comunidade" method="POST" action="/formulario/cadastro/comunidade/" novalidate>
             
             <input type="hidden" name="csrfmiddlewaretoken" value="TOKEN_GERADO_PELO_DJANGO_AQUI">
 
-            <h3 class="mt-4">Convênio</h3>
-            <div class="row">
-                <div class="col-lg-6 col-md-6 col-12"> <!-- Alterado para col-lg-6 col-md-6 --><div class="custom-select-wrapper mb-3">
-                        <select class="form-select" id="tipo_encaminhamento" name="tipo_encaminhamento" required>
-                            <option value="" selected disabled>Tipo de encaminhamento</option>
-                            <option value="caps">CAPS - Centro de Atenção Psicossocial</option>
-                            <option value="cras">CRAS - Centro de Referência de Assistência Social</option>
-                            <option value="creas">CREAS - Centro de Referência Especializado de Assistência Social</option>
-                            <option value="deam">DEAM - Delegacia da Mulher</option>
-                            <option value="dpdf">DPDF - Defensoria Pública do Distrito Federal</option>
-                            <option value="mpdft">MPDFT - Ministério Público do Distrito Federal</option>
-                            <option value="ses">SES - Secretaria de Saúde</option>
-                            <option value="sejus">SEJUS - Secretaria de Justiça</option>
-                            <option value="ubs">UBS - Unidade Básica de Saúde</option>
-                            <option value="clinica_ana_lucia">Clínica Ana Lucia Chaves Fecury (Unieuro Asa Sul)</option>
-                            <option value="outros">Outros</option>
-                        </select>
-                        <div class="custom-arrow"><i class="bi bi-caret-down-fill"></i></div>
-                    </div>
-                </div>
-            </div>
-
             <h3>Dados Pessoais do Inscrito</h3>
             <div class="row">
-                <div class="col-lg-6">
+                <div class="col-md-6">
                     <div class="mb-3">
-                        <input type="text" id="nome_inscrito" name="nome_inscrito" class="apenas-letras form-control" placeholder="Nome Completo" required>
+                        <label for="nome_inscrito" class="visually-hidden">Nome Completo</label>
+                        <input type="text" id="nome_inscrito" name="nome_inscrito" class="apenas-letras form-control" placeholder="Nome Completo" required autocomplete="name">
                     </div>
                     <div class="mb-3">
-                        <input type="date" class="form-control" id="data_nascimento" name="data_nascimento" placeholder="Data de Nascimento" required>
+                        <label for="data_nascimento" class="form-label visually-hidden">Data de Nascimento</label>
+                        <input type="date" class="form-control" id="data_nascimento" name="data_nascimento" required autocomplete="bday">
                     </div>
                     <div class="mb-3">
-                        <input type="text" id="cpf_inscrito" name="cpf_inscrito" class="cpf form-control" placeholder="CPF" required maxlength="14">
+                        <label for="cpf_inscrito" class="visually-hidden">CPF</label>
+                        <input type="text" id="cpf_inscrito" name="cpf_inscrito" class="cpf form-control" placeholder="CPF" required maxlength="14" autocomplete="off">
                     </div>
                     <div class="mb-3">
-                        <input type="text" id="telefone_inscrito" name="telefone_inscrito" class="telefone form-control" placeholder="Telefone Celular" required maxlength="15">
+                        <label for="telefone_inscrito" class="visually-hidden">Telefone Celular</label>
+                        <input type="text" id="telefone_inscrito" name="telefone_inscrito" class="telefone form-control" placeholder="Telefone Celular" required maxlength="15" autocomplete="tel">
                     </div>
                     <div class="mb-3">
-                        <input type="email" class="form-control email" id="email_inscrito" name="email_inscrito" placeholder="E-mail" required>
+                        <label for="email_inscrito" class="visually-hidden">E-mail</label>
+                        <input type="email" class="form-control email" id="email_inscrito" name="email_inscrito" placeholder="E-mail" required autocomplete="email">
                     </div>
                     <div class="custom-select-wrapper mb-3">
+                        <label for="identidade_genero" class="visually-hidden">Identidade de Gênero</label>
                         <select class="form-select" id="identidade_genero" name="identidade_genero" required>
                             <option value="" selected disabled>Identidade de Gênero</option>
                             <option value="masculino">Masculino</option>
@@ -74,9 +60,10 @@
                             <option value="outro">Outro</option>
                             <option value="pref-nao-dizer">Prefiro não dizer</option>
                         </select>
-                        <div class="custom-arrow"><i class="bi bi-caret-down-fill"></i></div>
+                        <div class="custom-arrow"><i class="bi bi-caret-down-fill" aria-hidden="true"></i></div>
                     </div>
                     <div class="custom-select-wrapper mb-3">
+                        <label for="cor_etnia" class="visually-hidden">Cor e Etnia</label>
                         <select class="form-select" id="cor_etnia" name="cor_etnia" required>
                             <option value="" selected disabled>Cor e Etnia</option>
                             <option value="branca">Branca</option>
@@ -86,9 +73,10 @@
                             <option value="indigena">Indígena</option>
                             <option value="outra">Outra</option>
                         </select>
-                        <div class="custom-arrow"><i class="bi bi-caret-down-fill"></i></div>
+                        <div class="custom-arrow"><i class="bi bi-caret-down-fill" aria-hidden="true"></i></div>
                     </div>
                     <div class="custom-select-wrapper mb-3">
+                        <label for="religiao" class="visually-hidden">Religião</label>
                         <select class="form-select" id="religiao" name="religiao" required>
                             <option value="" selected disabled>Religião</option>
                             <option value="catolica">Católica</option>
@@ -102,12 +90,10 @@
                             <option value="outra">Outra</option>
                             <option value="nenhuma">Nenhuma / Agnóstico / Ateu</option>
                         </select>
-                        <div class="custom-arrow"><i class="bi bi-caret-down-fill"></i></div>
+                        <div class="custom-arrow"><i class="bi bi-caret-down-fill" aria-hidden="true"></i></div>
                     </div>
-                </div>
-
-                <div class="col-lg-6">
                     <div class="custom-select-wrapper mb-3">
+                        <label for="estado_civil_inscrito" class="visually-hidden">Estado Civil</label>
                         <select class="form-select" id="estado_civil_inscrito" name="estado_civil_inscrito" required>
                             <option value="" selected disabled>Estado Civil</option>
                             <option value="solteiro">Solteiro(a)</option>
@@ -118,12 +104,10 @@
                             <option value="nenhum">Nenhum</option>
                             <option value="outros">Outros</option>
                         </select>
-                        <div class="custom-arrow"><i class="bi bi-caret-down-fill"></i></div>
-                    </div>
-                    <div class="mb-3">
-                        <input type="text" id="endereco_completo" name="endereco_completo" class="form-control" placeholder="Endereço Completo" required>
+                        <div class="custom-arrow"><i class="bi bi-caret-down-fill" aria-hidden="true"></i></div>
                     </div>
                     <div class="custom-select-wrapper mb-3">
+                        <label for="motivos_acompanhamento" class="visually-hidden">Motivos da Busca do Tratamento/Acompanhamento Psicológico</label>
                         <select class="form-select" id="motivos_acompanhamento" name="motivos_acompanhamento" required>
                             <option value="" selected disabled>Motivos da Busca do Tratamento/Acompanhamento Psicológico</option>
                             <option value="ansiedade">Ansiedade</option>
@@ -142,9 +126,13 @@
                             <option value="assediosexual">Assédio Sexual</option>
                             <option value="outro">Outro</option>
                         </select>
-                        <div class="custom-arrow"><i class="bi bi-caret-down-fill"></i></div>
+                        <div class="custom-arrow"><i class="bi bi-caret-down-fill" aria-hidden="true"></i></div>
                     </div>
+                </div>
+
+                <div class="col-md-6">
                     <div class="custom-select-wrapper mb-3">
+                        <label for="medicamentos_usados" class="visually-hidden">Uso de Medicação</label>
                         <select class="form-select" id="medicamentos_usados" name="medicamentos_usados" required>
                             <option value="" selected disabled>Uso de Medicação</option>
                             <option value="ansiolitico">Ansiolítico</option>
@@ -155,9 +143,10 @@
                             <option value="nenhum">Nenhum</option>
                             <option value="outro">Outro</option>
                         </select>
-                        <div class="custom-arrow"><i class="bi bi-caret-down-fill"></i></div>
+                        <div class="custom-arrow"><i class="bi bi-caret-down-fill" aria-hidden="true"></i></div>
                     </div>
                     <div class="custom-select-wrapper mb-3">
+                        <label for="pcd_neurodivergente" class="visually-hidden">Pessoa com Deficiência e/ou Neurodivergências</label>
                         <select class="form-select" id="pcd_neurodivergente" name="pcd_neurodivergente" required>
                             <option value="" selected disabled>Pessoa com Deficiência e/ou Neurodivergências</option>
                             <option value="tea">TEA (Transtorno do Espectro Autista)</option>
@@ -170,9 +159,10 @@
                             <option value="nenhum">Nenhum</option>
                             <option value="outro">Outro</option>
                         </select>
-                        <div class="custom-arrow"><i class="bi bi-caret-down-fill"></i></div>
+                        <div class="custom-arrow"><i class="bi bi-caret-down-fill" aria-hidden="true"></i></div>
                     </div>
                     <div class="custom-select-wrapper mb-3">
+                        <label for="doencas_fisicas" class="visually-hidden">Doenças Físicas Diagnosticadas</label>
                         <select class="form-select" id="doencas_fisicas" name="doencas_fisicas" required>
                             <option value="" selected disabled>Doenças Físicas Diagnosticadas</option>
                             <option value="doencaresp">Doenças respiratórias</option>
@@ -188,9 +178,10 @@
                             <option value="nenhum">Nenhum</option>
                             <option value="outro">Outro</option>
                         </select>
-                        <div class="custom-arrow"><i class="bi bi-caret-down-fill"></i></div>
+                        <div class="custom-arrow"><i class="bi bi-caret-down-fill" aria-hidden="true"></i></div>
                     </div>
                     <div class="custom-select-wrapper mb-3">
+                        <label for="tipo_terapias" class="visually-hidden">Tipo de Terapia</a</label>
                         <select class="form-select" id="tipo_terapias" name="tipo_terapias" required>
                             <option value="" selected disabled>Tipo de Terapia</option>
                             <option value="individual">Individual</option>
@@ -198,9 +189,10 @@
                             <option value="casal">Casal</option>
                             <option value="familia">Família</option>
                         </select>
-                        <div class="custom-arrow"><i class="bi bi-caret-down-fill"></i></div>
+                        <div class="custom-arrow"><i class="bi bi-caret-down-fill" aria-hidden="true"></i></div>
                     </div>
                     <div class="custom-select-wrapper mb-3">
+                        <label for="disponibilidade" class="visually-hidden">Disponibilidade</label>
                         <select class="form-select" id="disponibilidade" name="disponibilidade" required>
                             <option value="" selected disabled>Disponibilidade</option>
                             <option value="manha_semana">Manhã (Segunda a Sexta)</option>
@@ -208,7 +200,31 @@
                             <option value="noite_semana">Noite (Segunda a Sexta)</option>
                             <option value="sabado_manha">Sábado (Somente pela manhã, 8:30h às 12h)</option>
                         </select>
-                        <div class="custom-arrow"><i class="bi bi-caret-down-fill"></i></div>
+                        <div class="custom-arrow"><i class="bi bi-caret-down-fill" aria-hidden="true"></i></div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="rua" class="visually-hidden">Rua</label>
+                        <input type="text" id="rua" name="rua" class="form-control" placeholder="Rua" required autocomplete="address-line1">
+                    </div>
+                    <div class="mb-3">
+                        <label for="bairro" class="visually-hidden">Bairro</label>
+                        <input type="text" id="bairro" name="bairro" class="form-control" placeholder="Bairro" required autocomplete="address-level2">
+                    </div>
+                    <div class="mb-3">
+                        <label for="cidade" class="visually-hidden">Cidade</label>
+                        <input type="text" id="cidade" name="cidade" class="form-control" placeholder="Cidade" required autocomplete="address-level2">
+                    </div>
+                    <div class="custom-select-wrapper mb-3">
+                        <label for="uf" class="visually-hidden">UF</label>
+                        <select class="form-select" id="uf" name="uf" required autocomplete="address-level1">
+                            <option value="" selected disabled>UF</option>
+                            <option value="DF">Distrito Federal</option>
+                        </select>
+                        <div class="custom-arrow"><i class="bi bi-caret-down-fill" aria-hidden="true"></i></div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="cep" class="visually-hidden">CEP</label>
+                        <input type="text" id="cep" name="cep" class="form-control cep" placeholder="CEP" required maxlength="9" autocomplete="postal-code">
                     </div>
                 </div>
             </div>
@@ -227,22 +243,27 @@
             <div id="dadosResponsavel" style="display: none;">
                 <h3>Dados do Responsável Legal</h3>
                 <div class="row" id="secao-responsavel">
-                    <div class="col-lg-6">
+                    <div class="col-md-6">
                         <div class="mb-3">
-                            <input type="text" id="nome_responsavel" name="nome_responsavel" class="form-control apenas-letras" placeholder="Nome Completo">
+                            <label for="nome_responsavel" class="visually-hidden">Nome Completo do Responsável</label>
+                            <input type="text" id="nome_responsavel" name="nome_responsavel" class="form-control apenas-letras" placeholder="Nome Completo" autocomplete="name">
                         </div>
                         <div class="mb-3">
-                            <input type="text" id="cpf_responsavel" name="cpf_responsavel" class="form-control cpf" placeholder="CPF" maxlength="14">
+                             <label for="cpf_responsavel" class="visually-hidden">CPF do Responsável</label>
+                            <input type="text" id="cpf_responsavel" name="cpf_responsavel" class="form-control cpf" placeholder="CPF" maxlength="14" autocomplete="off">
                         </div>
                         <div class="mb-3">
-                            <input type="text" id="telefone_responsavel" name="telefone_responsavel" class="form-control telefone" placeholder="Telefone Celular" maxlength="15">
+                            <label for="telefone_responsavel" class="visually-hidden">Telefone Celular do Responsável</label>
+                            <input type="text" id="telefone_responsavel" name="telefone_responsavel" class="form-control telefone" placeholder="Telefone Celular" maxlength="15" autocomplete="tel">
                         </div>
                     </div>
-                    <div class="col-lg-6">
+                    <div class="col-md-6">
                         <div class="mb-3">
-                            <input type="email" id="email_responsavel" class="form-control" name="email_responsavel" placeholder="E-mail">
+                            <label for="email_responsavel" class="visually-hidden">E-mail do Responsável</label>
+                            <input type="email" id="email_responsavel" class="form-control" name="email_responsavel" placeholder="E-mail" autocomplete="email">
                         </div>
                         <div class="custom-select-wrapper mb-3">
+                            <label for="estado_civil_responsavel" class="visually-hidden">Estado Civil do Responsável</label>
                             <select class="form-select" id="estado_civil_responsavel" name="estado_civil_responsavel">
                                 <option value="" selected disabled>Estado Civil</option>
                                 <option value="solteiro">Solteiro(a)</option>
@@ -251,9 +272,10 @@
                                 <option value="viuvo">Viúvo(a)</option>
                                 <option value="uniao-estavel">União Estável</option>
                             </select>
-                            <div class="custom-arrow"><i class="bi bi-caret-down-fill"></i></div>
+                            <div class="custom-arrow"><i class="bi bi-caret-down-fill" aria-hidden="true"></i></div>
                         </div>
                         <div class="mb-3">
+                            <label for="parentesco_responsavel" class="visually-hidden">Grau de Parentesco</label>
                             <input type="text" id="parentesco_responsavel" name="parentesco_responsavel" class="form-control apenas-letras" placeholder="Grau de Parentesco">
                         </div>
                     </div>
@@ -267,11 +289,13 @@
                         <h5>Contato 1</h5>
                         <div class="col-lg-6">
                             <div class="mb-3">
+                                <label for="nome_urgencia_1" class="visually-hidden">Nome Completo (Urgência)</label>
                                 <input type="text" id="nome_urgencia_1" name="nome_urgencia[]" class="apenas-letras form-control" placeholder="Nome Completo" required>
                             </div>
                         </div>
                         <div class="col-lg-6">
                              <div class="mb-3">
+                                <label for="telefone_urgencia_1" class="visually-hidden">Telefone Celular (Urgência)</label>
                                 <input type="text" id="telefone_urgencia_1" name="telefone_urgencia[]" class="telefone form-control" placeholder="Telefone Celular" required maxlength="15">
                             </div>
                         </div>
@@ -280,8 +304,8 @@
             </div>
             
             <div class="d-flex align-items-center gap-2 mt-2 mb-4">
-                 <button type="button" class="add-contact-btn" id="addContactBtn">
-                     <i class="bi bi-plus"></i>
+                 <button type="button" class="add-contact-btn" id="addContactBtn" aria-label="Adicionar outro contato de urgência">
+                     <i class="bi bi-plus" aria-hidden="true"></i>
                  </button>
                  <span>Adicionar outro contato</span>
             </div>
@@ -303,7 +327,7 @@
 
             <div class="row mt-5">
                 <div class="col-12 text-center">
-                    <button type="submit" class="btn btn-primary submit-button">
+                    <button type="submit" class="btn btn-primary submit-button" id="submit-button">
                         Salvar Inscrição
                     </button>
                 </div>
@@ -312,7 +336,8 @@
         </form>
     </main>
     
-    <script src="formconvenio.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script src="teste.js" defer></script>
 </body>
 </html>
-
