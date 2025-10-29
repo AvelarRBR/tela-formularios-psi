@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', function () {
-
+ // a
     const form = document.getElementById('form-comunidade');
     if (!form) {
         console.error("Erro Crítico: O formulário com ID 'form-comunidade' não foi encontrado.");
